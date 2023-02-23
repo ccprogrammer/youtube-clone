@@ -1,6 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:youtube_clone/video_screen.dart';
+
+buildScreen({appbar, body}) => NestedScrollView(
+      headerSliverBuilder: (context, innerBoxIsScrolled) => [
+        appbar,
+      ],
+      body: body,
+    );
+
+buildAppBar({
+  required Widget logo,
+  required List<Widget> action,
+  required Widget explore,
+  required List<Widget> category,
+}) {
+  return SliverAppBar(
+    title: logo,
+    actions: action,
+    bottom: PreferredSize(
+      preferredSize: const Size.fromHeight(kToolbarHeight + 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          buildAppBarDivider(),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  explore,
+                  ...category,
+                  const SizedBox(width: 12),
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    ),
+    // -------------------------------------
+    elevation: 0,
+    backgroundColor: Colors.white,
+    floating: true,
+    snap: true,
+    pinned: false,
+    systemOverlayStyle: const SystemUiOverlayStyle(
+      statusBarColor: Colors.white,
+    ),
+    automaticallyImplyLeading: false,
+  );
+}
+
+buildBody({required List<Widget> content}) {
+  return ListView(
+    padding: EdgeInsets.zero,
+    children: content,
+  );
+}
 
 buildVideo({thumbnail, avatar, title, views, date}) {
   return Container(
@@ -19,20 +78,21 @@ buildVideo({thumbnail, avatar, title, views, date}) {
         child: Column(
           children: [
             // thumbnail section
-            thumbnail != null
-                ? Container(
-                    height: 215,
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      image: DecorationImage(
+            Container(
+              height: 215,
+              decoration: BoxDecoration(
+                color: Colors.grey,
+                image: thumbnail != null
+                    ? DecorationImage(
                         image: NetworkImage(
                           thumbnail,
                         ),
                         fit: BoxFit.cover,
-                      ),
-                    ),
-                  )
-                : const SizedBox(),
+                      )
+                    : null,
+              ),
+            ),
+
             // bottom section
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
@@ -98,6 +158,41 @@ buildVideo({thumbnail, avatar, title, views, date}) {
   );
 }
 
+buildExplore() => Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: const Color(0xffECECEC),
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: Row(
+              children: [
+                buildAction('compass'),
+                const Text(
+                  'Explore',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            height: 20,
+            margin: const EdgeInsets.only(left: 16),
+            child: const VerticalDivider(
+              color: Color(0xffCECECE),
+              thickness: 1,
+              width: 0,
+            ),
+          ),
+        ],
+      ),
+    );
+
 buildCategory(String text) {
   bool isAll = text == 'All';
 
@@ -120,6 +215,53 @@ buildCategory(String text) {
         color: isAll ? Colors.white : Colors.black,
         fontSize: 12,
       ),
+    ),
+  );
+}
+
+buildShortsTab({required List<Widget> item}) {
+  return Container(
+    width: double.infinity,
+    color: Colors.white,
+    margin: const EdgeInsets.only(bottom: 8),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // shorts title
+        Container(
+          margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+          child: Row(
+            children: [
+              Image.asset(
+                'assets/icons/icon-shorts.png',
+                width: 24,
+              ),
+              const SizedBox(width: 8),
+              const Text(
+                'Shorts',
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        // shorts item
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 14),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                const SizedBox(width: 16),
+                ...item,
+              ],
+            ),
+          ),
+        ),
+      ],
     ),
   );
 }
@@ -198,48 +340,71 @@ buildAppBarDivider() => const Padding(
       ),
     );
 
-buildCategoryDivider() => Container(
-      height: 20,
-      margin: const EdgeInsets.only(right: 16),
-      child: const VerticalDivider(
-        color: Color(0xffCECECE),
-        thickness: 1,
-        width: 0,
-      ),
-    );
-
-buildExplore({title}) => Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: const Color(0xffECECEC),
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: Row(
-              children: [
-                buildIcon('compass'),
-                Text(
-                  title ?? '',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-
-buildIcon(iconUrl) {
+buildAction(iconUrl) {
   return Container(
     margin: const EdgeInsets.only(right: 12),
     child: Image.asset(
       'assets/icons/icon-$iconUrl.png',
       width: 24,
+    ),
+  );
+}
+
+buildBottomNavigationBar({required List<Widget> navItem}) {
+  return BottomAppBar(
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: navItem,
+      ),
+    ),
+  );
+}
+
+buildNavItem({iconUrl, label, isFab = false}) {
+  if (isFab) {
+    return IconButton(
+      iconSize: 42,
+      icon: Image.asset(
+        'assets/icons/icon-fab.png',
+      ),
+      constraints: const BoxConstraints(),
+      padding: EdgeInsets.zero,
+      onPressed: () {},
+    );
+  }
+  double height;
+  double width;
+
+  if (iconUrl == 'home') {
+    height = 24.0;
+    width = 24.0;
+  } else if (iconUrl == 'shorts') {
+    height = 26.0;
+    width = 30.0;
+  } else {
+    height = 28.0;
+    width = 28.0;
+  }
+
+  return SizedBox(
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Image.asset(
+          'assets/icons/icon-$iconUrl.png',
+          height: height,
+          width: width,
+        ),
+        const SizedBox(height: 4),
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 12,
+          ),
+        ),
+      ],
     ),
   );
 }

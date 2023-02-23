@@ -62,4 +62,22 @@ class DB {
       'views': '1.9k',
     },
   ];
+  static List nav = [
+    {
+      'iconUrl': 'home',
+      'label': 'Home',
+    },
+    {
+      'iconUrl': 'shorts-black',
+      'label': 'Shorts',
+    },
+    {
+      'iconUrl': 'subscriptions',
+      'label': 'Subscriptions',
+    },
+    {
+      'iconUrl': 'library',
+      'label': 'Library',
+    },
+  ];
 }

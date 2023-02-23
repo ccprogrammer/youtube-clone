@@ -81,7 +81,7 @@ buildVideo({thumbnail, avatar, title, views, date}) {
             Container(
               height: 215,
               decoration: BoxDecoration(
-                color: Colors.grey,
+                color: const Color(0xff3B3B3B),
                 image: thumbnail != null
                     ? DecorationImage(
                         image: NetworkImage(
@@ -272,7 +272,7 @@ buildShorts({thumbnail, title, views}) {
     width: 150,
     margin: const EdgeInsets.only(right: 12),
     decoration: BoxDecoration(
-      color: Colors.grey,
+      color: const Color(0xff3B3B3B),
       image: thumbnail != null
           ? DecorationImage(
               image: NetworkImage(thumbnail),
@@ -380,24 +380,29 @@ buildNavItem({iconUrl, label, isFab = false}) {
   if (iconUrl == 'home') {
     height = 24.0;
     width = 24.0;
-  } else if (iconUrl == 'shorts') {
-    height = 26.0;
-    width = 30.0;
+  } else if (iconUrl == 'shorts-black') {
+    height = 30.0;
+    width = 32.0;
+  } else if (iconUrl == 'library') {
+    height = 22.0;
+    width = 24.0;
   } else {
     height = 28.0;
     width = 28.0;
   }
 
   return SizedBox(
+    height: 56,
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Image.asset(
-          'assets/icons/icon-$iconUrl.png',
-          height: height,
-          width: width,
+        Expanded(
+          child: Image.asset(
+            'assets/icons/icon-$iconUrl.png',
+            height: height,
+            width: width,
+          ),
         ),
-        const SizedBox(height: 4),
         Text(
           label,
           style: const TextStyle(

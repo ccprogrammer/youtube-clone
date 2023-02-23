@@ -365,7 +365,7 @@ buildBottomNavigationBar({required List<Widget> navItem}) {
 buildNavItem({iconUrl, label, isFab = false}) {
   if (isFab) {
     return IconButton(
-      iconSize: 42,
+      iconSize: 48,
       icon: Image.asset(
         'assets/icons/icon-fab.png',
       ),
@@ -392,7 +392,7 @@ buildNavItem({iconUrl, label, isFab = false}) {
   }
 
   return SizedBox(
-    height: 56,
+    height: 50,
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [

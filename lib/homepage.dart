@@ -21,7 +21,7 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       backgroundColor: const Color(0xffECECEC),
       body: buildScreen(
-        appbar: buildAppBar(
+        appBar: buildAppBar(
           logo: buildLogo(),
           action: [
             buildAction('screenshare'),

@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:youtube_clone/video_screen.dart';
 
-buildScreen({appbar, body}) => NestedScrollView(
+buildScreen({appBar, body}) => NestedScrollView(
       headerSliverBuilder: (context, innerBoxIsScrolled) => [
-        appbar,
+        appBar,
       ],
       body: body,
     );

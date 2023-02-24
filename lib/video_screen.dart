@@ -20,7 +20,7 @@ class _VideoScreenState extends State<VideoScreen> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          FlickYoutube(videoUrl: widget.data['video_url']),
+          FlickYoutube(data: widget.data),
           Expanded(
             child: ListView(
               padding: EdgeInsets.zero,

@@ -8,8 +8,8 @@ import 'package:video_player/video_player.dart';
 import 'package:youtube_clone/video_player/custom_flick_controls.dart';
 
 class FlickYoutube extends StatefulWidget {
-  const FlickYoutube({Key? key, required this.videoUrl}) : super(key: key);
-  final String videoUrl;
+  const FlickYoutube({Key? key, required this.data}) : super(key: key);
+  final dynamic data;
 
   @override
   State<FlickYoutube> createState() => _FlickYoutubeState();
@@ -22,7 +22,7 @@ class _FlickYoutubeState extends State<FlickYoutube> {
   @override
   void initState() {
     super.initState();
-    log('url ${widget.videoUrl}');
+    log('url ${widget.data['video_url']}');
     init();
   }
 
@@ -33,13 +33,14 @@ class _FlickYoutubeState extends State<FlickYoutube> {
   }
 
   init() async {
-    var check = await DirectLink.check(widget.videoUrl);
+    var check = await DirectLink.check(widget.data['video_url']);
     if (check == null) {
     } else {
       videoPlayerController = VideoPlayerController.network(
         check[0].link,
       )..initialize().then((value) {
           log('initialized');
+          videoPlayerController!.play();
           setState(() {});
         });
 
@@ -57,7 +58,15 @@ class _FlickYoutubeState extends State<FlickYoutube> {
       aspectRatio: 16 / 9,
       child: flickManager == null
           ? Container(
-              color: Colors.black,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                    widget.data['thumbnail'],
+                  ),
+                ),
+              ),
               child: const Center(
                 child: CircularProgressIndicator(
                   color: Colors.white,

@@ -1,11 +1,13 @@
+import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_clone/components.dart';
 import 'package:youtube_clone/data.dart';
 import 'package:youtube_clone/video_player/flick_youtube.dart';
 
 class VideoScreen extends StatefulWidget {
-  const VideoScreen({super.key, required this.data});
+  const VideoScreen({super.key, required this.data, required this.flickManager});
   final dynamic data;
+  final FlickManager flickManager;
 
   @override
   State<VideoScreen> createState() => _VideoScreenState();
@@ -20,7 +22,7 @@ class _VideoScreenState extends State<VideoScreen> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          FlickYoutube(data: widget.data),
+          FlickYoutube(data: widget.data, flickManager: widget.flickManager),
           Expanded(
             child: ListView(
               padding: EdgeInsets.zero,

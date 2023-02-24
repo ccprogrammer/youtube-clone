@@ -1,7 +1,6 @@
+import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'package:youtube_clone/video_screen.dart';
 
 buildScreen({appBar, body}) => NestedScrollView(
       headerSliverBuilder: (context, innerBoxIsScrolled) => [
@@ -54,14 +53,80 @@ buildAppBar({
   );
 }
 
-buildBody({required List<Widget> content}) {
-  return ListView(
-    padding: EdgeInsets.zero,
-    children: content,
+buildBody({required List<Widget> content, flickManager, playingVideo}) {
+  return Stack(
+    alignment: Alignment.bottomCenter,
+    children: [
+      ListView(
+        padding: EdgeInsets.zero,
+        children: content,
+      ),
+      if (flickManager != null)
+        Dismissible(
+          key: const Key('video'),
+          direction: DismissDirection.down,
+          child: Container(
+            height: 45,
+            color: Colors.white70,
+            child: Row(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(right: 8),
+                  width: 90,
+                  color: Colors.black,
+                  child: FlickVideoPlayer(
+                    flickManager: flickManager,
+                    flickVideoWithControls: const FlickVideoWithControls(),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 6),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children:  [
+                        Text(
+                          playingVideo['title'],
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Text(
+                          playingVideo['author'],
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                const Icon(
+                  Icons.pause,
+                  color: Colors.black,
+                ),
+                const SizedBox(width: 16),
+                const Icon(
+                  Icons.close,
+                  color: Colors.black,
+                ),
+                const SizedBox(width: 16),
+              ],
+            ),
+          ),
+        ),
+    ],
   );
 }
 
-buildVideo({thumbnail, avatar, title, views, date, video}) {
+buildVideo(
+    {thumbnail, avatar, title, views, date, video, initPlayer, flickManager}) {
   return Container(
     width: double.infinity,
     color: Colors.white,
@@ -70,10 +135,7 @@ buildVideo({thumbnail, avatar, title, views, date, video}) {
       color: Colors.transparent,
       child: InkWell(
         onTap: () {
-          Get.to(
-            () => VideoScreen(data: video),
-            transition: Transition.noTransition,
-          );
+          initPlayer();
         },
         child: Column(
           children: [

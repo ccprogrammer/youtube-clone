@@ -61,7 +61,7 @@ buildBody({required List<Widget> content}) {
   );
 }
 
-buildVideo({thumbnail, avatar, title, views, date}) {
+buildVideo({thumbnail, avatar, title, views, date, video}) {
   return Container(
     width: double.infinity,
     color: Colors.white,
@@ -71,7 +71,7 @@ buildVideo({thumbnail, avatar, title, views, date}) {
       child: InkWell(
         onTap: () {
           Get.to(
-            () => VideoScreen(),
+            () => VideoScreen(data: video),
             transition: Transition.noTransition,
           );
         },

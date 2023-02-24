@@ -15,51 +15,61 @@ class DB {
   static List video = [
     {
       'thumbnail':
-          'https://i.ytimg.com/vi/3p1uj9f1QDc/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCQmwPZ__b5lFaDq12qPEIj2blqVg',
+          'https://i.ytimg.com/vi/62ia3-1fEKs/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBP9-vBPx_wnckb-qvUf5lDKu3_Wg',
+      'video_url': 'https://www.youtube.com/watch?v=62ia3-1fEKs',
       'avatar':
-          'https://yt3.ggpht.com/gFUCcNt3vDqhE01l4anDMf6SWBIoZ1n7VvFfL4xoYblDlx_HI7IkJ3AYikno8XdE_kCaIeUJYQ=s68-c-k-c0x00ffffff-no-rj',
-      'title': 'One Punch Man (Season 2) - Episode 24',
-      'views': '2.8M',
-      'date': '10 months',
-    },
-    {
-      'thumbnail':
-          'https://i.ytimg.com/vi/07oVx9bspic/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDKuwR1mb6CWUNVpmWTjYEFUjW6oA',
-      'avatar':
-          'https://yt3.ggpht.com/ytc/AL5GRJXzEhESIXcePMxFzZVrcch2pIHk2jlFoZfdv3gz2Q=s68-c-k-c0x00ffffff-no-rj',
-      'title': 'PUBG Indonesia - Kebodohan di Luar Zona',
-      'views': '2.7M',
-      'date': '8 days',
-    },
-    {
-      'thumbnail':
-          'https://i.ytimg.com/vi/42D98knXoWg/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBBU8JlPAUFQcxTXVvs8eZ89UHhVA',
-      'avatar':
-          'https://yt3.ggpht.com/ytc/AL5GRJUVbBDzXk4haf8q_-z10Ne6A4rkN8i7975N8T8z=s68-c-k-c0x00ffffff-no-rj',
+          'https://yt3.ggpht.com/ytc/AL5GRJWD473iaxIAAdXBkr6wCGqF4rqaGUw0nVKocPP0vw=s68-c-k-c0x00ffffff-no-rj',
       'title':
-          'THE FLASH, EINSTEIN, DAN PERLAMBATAN WAKTU | TEORI RELATIVITAS KHUSUS',
-      'views': '774k',
-      'date': '1 month',
+          'Oda Just REVEALED Shanks vs Luffy at LAUGH TALE and IT\'S ABSOLUTELY INSANE! (ONE PIECE)',
+      'views': '1.5K',
+      'date': '9 minutes',
+      'author': 'Anime Balls Deep',
+      'subscribers': '1.65M',
+    },
+    {
+      'thumbnail':
+          'https://i.ytimg.com/an_webp/zp6xM6Aezmg/mqdefault_6s.webp?du=3000&sqp=CNDB4J8G&rs=AOn4CLCXSuodENG2dt-OykiTE8cWjbCn6w',
+      'video_url': 'https://www.youtube.com/watch?v=zp6xM6Aezmg',
+      'avatar':
+          'https://yt3.ggpht.com/ytc/AL5GRJWvJad-ZJCmFfm70FMQPUzCPX-QHfZPPIVGFuvaLg=s68-c-k-c0x00ffffff-no-rj',
+      'title': 'Madara vs Shinobi Alliance | Naruto Shippuden',
+      'views': '9.8M',
+      'date': '2 years',
+      'author': 'Crunchyroll Collection',
+      'subscribers': '4.93M',
+    },
+    {
+      'thumbnail':
+          'https://i.ytimg.com/vi/X0_jdAVw55c/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAN18pDmuiCKjjrQIYwX58qMlJJdA',
+      'video_url': 'https://www.youtube.com/watch?v=X0_jdAVw55c',
+      'avatar':
+          'https://yt3.ggpht.com/ytc/AL5GRJUPA5De1bdSoGbQZ5sbqhZoT3th5Hz2610yjwVP=s48-c-k-c0x00ffffff-no-rj',
+      'title':
+          'Saitama enters Boros battleship and fight him (Full scene) ONE PUNCH MAN.',
+      'views': '150k',
+      'date': '2 years',
+      'author': 'somewhat highlight',
+      'subscribers': '301',
     },
   ];
   static List shorts = [
     {
       'thumbnail':
-          'https://i.ytimg.com/vi/Hf0ZtbwJrmY/hq720_2.jpg?sqp=-oaymwEdCJUDENAFSFXyq4qpAw8IARUAAIhCcAHAAQbQAQE=&rs=AOn4CLDRVUM3w9Ol33BLmuraF2qvDoNmmQ',
-      'title': 'Mufti Menk Smoking... his beard 😵‍💫',
-      'views': '153k',
+          'https://i.ytimg.com/vi/r50l5xmlFdA/hq720_2.jpg?sqp=-oaymwEdCJUDENAFSFXyq4qpAw8IARUAAIhCcAHAAQbQAQE=&rs=AOn4CLC_EC0cZV6W1XHNgvNZLIr13uQ85Q',
+      'title': 'What if Luffy wasn\'t DUMB',
+      'views': '3.6M',
     },
     {
       'thumbnail':
-          'https://i.ytimg.com/vi/HWIIoYTOQac/hq720_2.jpg?sqp=-oaymwEdCJUDENAFSFXyq4qpAw8IARUAAIhCcAHAAQbQAQE=&rs=AOn4CLAVxPkugR0gJbBBCCferYEJPzzKEg',
-      'title': 'I Don\'t Like Mr Bean as a Person - Rowan Atkinson',
-      'views': '7.3M',
+          'https://i.ytimg.com/vi/WbVkROCvTuQ/hq720_2.jpg?sqp=-oaymwEdCJYDENAFSFXyq4qpAw8IARUAAIhCcAHAAQbQAQE=&rs=AOn4CLD5tHxuktccTfdWNcHEWoTwxSIr7w',
+      'title': 'SEBERAPA KUAT MADARA UCHIHA DI SERIAL NARUTO SHIPPUDEN #shorts',
+      'views': '494K',
     },
     {
       'thumbnail':
-          'https://i.ytimg.com/vi/v9hZa8fvwgA/hq720_2.jpg?sqp=-oaymwEdCJUDENAFSFXyq4qpAw8IARUAAIhCcAHAAQbQAQE=&rs=AOn4CLCh0Ckvng_x1Dt2ea8oCPoFl57zSg',
-      'title': 'MAKANAN SESUAI SUNNAH ITU YANG BAGAIMANA?',
-      'views': '1.9k',
+          'https://i.ytimg.com/vi/eqdRp0BmyiY/hq720_2.jpg?sqp=-oaymwEdCJYDENAFSFXyq4qpAw8IARUAAIhCcAHAAQbQAQE=&rs=AOn4CLCgviF0zAo7CW79nOVDKzqsjG10Cg',
+      'title': 'Saitama vs goku best full video😎 #shorts #saitamavsgoku',
+      'views': '19M',
     },
   ];
   static List nav = [

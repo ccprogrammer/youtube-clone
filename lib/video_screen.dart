@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_clone/components.dart';
 import 'package:youtube_clone/data.dart';
-import 'package:youtube_clone/video_player/custom_video_player.dart';
+import 'package:youtube_clone/video_player/flick_youtube.dart';
 
 class VideoScreen extends StatefulWidget {
-  const VideoScreen({super.key});
+  const VideoScreen({super.key, required this.data});
+  final dynamic data;
 
   @override
   State<VideoScreen> createState() => _VideoScreenState();
@@ -19,30 +20,28 @@ class _VideoScreenState extends State<VideoScreen> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          const AspectRatio(
-            aspectRatio: 16 / 9,
-            child: CustomVideoPlayer(),
-          ),
+          FlickYoutube(videoUrl: widget.data['video_url']),
           Expanded(
             child: ListView(
+              padding: EdgeInsets.zero,
               children: [
                 // title
                 Container(
                   margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Expanded(
                         child: Text(
-                          'সীরাহ | রাসূলের ﷺ দেহের বর্ননা, নবুওয়াত ও রিসালাত লাভ, জিব্রাইলের আঃ সাথে সাক্ষাত | পর্ব - ০৪',
-                          style: TextStyle(
+                          widget.data['title'],
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                       ),
-                      SizedBox(width: 8),
-                      Icon(Icons.keyboard_arrow_down),
+                      const SizedBox(width: 8),
+                      const Icon(Icons.keyboard_arrow_down),
                     ],
                   ),
                 ),
@@ -50,26 +49,12 @@ class _VideoScreenState extends State<VideoScreen> {
                 // views
                 Container(
                   margin: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-                  child: RichText(
-                    text: const TextSpan(
-                      children: [
-                        TextSpan(
-                          text: '3,627 views • Premiered Jul 1, 2021 ',
-                          style: TextStyle(
-                            color: Color(0xff6C6C6C),
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12,
-                          ),
-                        ),
-                        TextSpan(
-                          text: '#shirat @Hzmohummad(s) #islamic',
-                          style: TextStyle(
-                            color: Color(0xff068BFF),
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
+                  child: Text(
+                    '${widget.data['views']} views • ${widget.data['date']} ',
+                    style: const TextStyle(
+                      color: Color(0xff6C6C6C),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 12,
                     ),
                   ),
                 ),
@@ -123,25 +108,24 @@ class _VideoScreenState extends State<VideoScreen> {
                       width: 36,
                       height: 36,
                       margin: const EdgeInsets.only(right: 12),
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         color: Colors.grey,
                         image: DecorationImage(
-                          image: NetworkImage(
-                              'https://yt3.ggpht.com/gFUCcNt3vDqhE01l4anDMf6SWBIoZ1n7VvFfL4xoYblDlx_HI7IkJ3AYikno8XdE_kCaIeUJYQ=s68-c-k-c0x00ffffff-no-rj'),
+                          image: NetworkImage(widget.data['avatar']),
                           fit: BoxFit.cover,
                         ),
                         shape: BoxShape.circle,
                       ),
                     ),
-                    title: const Text(
-                      'Voice of Books',
-                      style: TextStyle(
+                    title: Text(
+                      '${widget.data['author']}',
+                      style: const TextStyle(
                         fontSize: 16,
                       ),
                     ),
-                    subtitle: const Text(
-                      '289K subscibe',
-                      style: TextStyle(
+                    subtitle: Text(
+                      '${widget.data['subscribers']} subscribers',
+                      style: const TextStyle(
                         fontSize: 12,
                         color: Color(0xff6C6C6C),
                       ),
@@ -217,7 +201,7 @@ class _VideoScreenState extends State<VideoScreen> {
                             // comment text
                             const Expanded(
                               child: Text(
-                                'জাযাকাল্লাহ ভাইয়া আপনার এই মেহনত আল্লাহ কবুল করুক সম্ভব হলে প্রতিদিন ১টা করে porbo দিয়েন',
+                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse metus nulla.',
                               ),
                             ),
                           ],
@@ -228,19 +212,20 @@ class _VideoScreenState extends State<VideoScreen> {
                 ),
 
                 // video section
-                buildVideo(
-                  thumbnail: video[0]['thumbnail'],
-                  avatar: video[0]['avatar'],
-                  title: video[0]['title'],
-                  views: video[0]['views'],
-                  date: video[0]['date'],
-                ),
+
                 buildVideo(
                   thumbnail: video[2]['thumbnail'],
                   avatar: video[2]['avatar'],
                   title: video[2]['title'],
                   views: video[2]['views'],
                   date: video[2]['date'],
+                ),
+                buildVideo(
+                  thumbnail: video[1]['thumbnail'],
+                  avatar: video[1]['avatar'],
+                  title: video[1]['title'],
+                  views: video[1]['views'],
+                  date: video[1]['date'],
                 ),
               ],
             ),

@@ -50,6 +50,7 @@ class _HomepageState extends State<Homepage> {
               avatar: video[0]['avatar'],
               date: video[0]['date'],
               views: video[0]['views'],
+              video: video[0],
             ),
             buildVideo(
               thumbnail: video[1]['thumbnail'],
@@ -57,6 +58,7 @@ class _HomepageState extends State<Homepage> {
               avatar: video[1]['avatar'],
               date: video[1]['date'],
               views: video[1]['views'],
+              video: video[1],
             ),
             buildShortsTab(
               item: [
@@ -83,6 +85,7 @@ class _HomepageState extends State<Homepage> {
               avatar: video[2]['avatar'],
               date: video[2]['date'],
               views: video[2]['views'],
+              video: video[2],
             ),
           ],
         ),

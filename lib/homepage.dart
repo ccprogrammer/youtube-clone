@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:youtube_clone/components.dart';
 import 'package:youtube_clone/data.dart';
+// ignore: depend_on_referenced_packages
 import 'package:video_player/video_player.dart';
 import 'package:youtube_clone/video_screen.dart';
 

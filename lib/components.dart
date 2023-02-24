@@ -353,7 +353,7 @@ buildAction(iconUrl) {
 buildBottomNavigationBar({required List<Widget> navItem}) {
   return BottomAppBar(
     child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: navItem,
@@ -378,21 +378,21 @@ buildNavItem({iconUrl, label, isFab = false}) {
   double width;
 
   if (iconUrl == 'home') {
-    height = 20.0;
-    width = 20.0;
-  } else if (iconUrl == 'shorts-black') {
-    height = 26.0;
-    width = 28.0;
-  } else if (iconUrl == 'library') {
     height = 18.0;
-    width = 20.0;
-  } else {
+    width = 18.0;
+  } else if (iconUrl == 'shorts-black') {
     height = 24.0;
-    width = 24.0;
+    width = 26.0;
+  } else if (iconUrl == 'library') {
+    height = 16.0;
+    width = 18.0;
+  } else {
+    height = 22.0;
+    width = 22.0;
   }
 
   return SizedBox(
-    height: 50,
+    height: 38,
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [

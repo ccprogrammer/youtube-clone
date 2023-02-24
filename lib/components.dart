@@ -48,7 +48,7 @@ buildAppBar({
     snap: true,
     pinned: false,
     systemOverlayStyle: const SystemUiOverlayStyle(
-      statusBarColor: Colors.white,
+      statusBarColor: Color(0xff121212),
     ),
     automaticallyImplyLeading: false,
   );
@@ -71,7 +71,7 @@ buildVideo({thumbnail, avatar, title, views, date}) {
       child: InkWell(
         onTap: () {
           Get.to(
-            () => const VideoScreen(),
+            () => VideoScreen(),
             transition: Transition.noTransition,
           );
         },

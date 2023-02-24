@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:youtube_clone/components.dart';
 import 'package:youtube_clone/data.dart';
+import 'package:youtube_clone/video_player/custom_video_player.dart';
 
 class VideoScreen extends StatefulWidget {
   const VideoScreen({super.key});
@@ -14,12 +14,6 @@ class _VideoScreenState extends State<VideoScreen> {
   var video = DB.video;
 
   @override
-  void initState() {
-    super.initState();
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -27,7 +21,7 @@ class _VideoScreenState extends State<VideoScreen> {
         children: [
           const AspectRatio(
             aspectRatio: 16 / 9,
-            child: Placeholder(),
+            child: CustomVideoPlayer(),
           ),
           Expanded(
             child: ListView(
@@ -248,7 +242,6 @@ class _VideoScreenState extends State<VideoScreen> {
                   views: video[2]['views'],
                   date: video[2]['date'],
                 ),
-
               ],
             ),
           ),

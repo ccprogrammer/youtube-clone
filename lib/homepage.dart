@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:youtube_clone/components.dart';
 import 'package:youtube_clone/data.dart';
 
@@ -15,6 +16,12 @@ class _HomepageState extends State<Homepage> {
   var video = DB.video;
   var shorts = DB.shorts;
   var nav = DB.nav;
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -21,8 +21,8 @@ class DB {
           'https://yt3.ggpht.com/ytc/AL5GRJWD473iaxIAAdXBkr6wCGqF4rqaGUw0nVKocPP0vw=s68-c-k-c0x00ffffff-no-rj',
       'title':
           'Oda Just REVEALED Shanks vs Luffy at LAUGH TALE and IT\'S ABSOLUTELY INSANE! (ONE PIECE)',
-      'views': '1.5K',
-      'date': '9 minutes',
+      'views': '6.2M',
+      'date': '1 months',
       'author': 'Anime Balls Deep',
       'subscribers': '1.65M',
     },

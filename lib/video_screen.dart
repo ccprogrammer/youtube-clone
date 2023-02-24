@@ -190,7 +190,7 @@ class _VideoScreenState extends State<VideoScreen> {
                                 color: Colors.grey,
                                 image: DecorationImage(
                                   image: NetworkImage(
-                                      'https://yt3.ggpht.com/gFUCcNt3vDqhE01l4anDMf6SWBIoZ1n7VvFfL4xoYblDlx_HI7IkJ3AYikno8XdE_kCaIeUJYQ=s68-c-k-c0x00ffffff-no-rj'),
+                                      'https://cdn-brilio-net.akamaized.net/community/2018/12/19/15748/image_1545037500_5c1766bccf125.jpg'),
                                   fit: BoxFit.cover,
                                 ),
                                 shape: BoxShape.circle,

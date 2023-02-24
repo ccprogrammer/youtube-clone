@@ -33,8 +33,7 @@ class _FlickYoutubeState extends State<FlickYoutube> {
   }
 
   init() async {
-    var check =
-        await DirectLink.check(widget.videoUrl);
+    var check = await DirectLink.check(widget.videoUrl);
     if (check == null) {
     } else {
       videoPlayerController = VideoPlayerController.network(
@@ -57,7 +56,14 @@ class _FlickYoutubeState extends State<FlickYoutube> {
     return AspectRatio(
       aspectRatio: 16 / 9,
       child: flickManager == null
-          ? Container(color: const Color(0xff3B3B3B))
+          ? Container(
+              color: Colors.black,
+              child: const Center(
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                ),
+              ),
+            )
           : FlickVideoPlayer(
               flickManager: flickManager!,
               flickVideoWithControls: FlickVideoWithControls(
